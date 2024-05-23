@@ -1,0 +1,74 @@
+name: lucra
+description: A new Flutter project.
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+version: 1.2.0+1.2.0
+
+environment:
+  sdk: '>=3.4.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
+  flutter_translate: ^3.1.0
+#  flutter_cupertino_localizations: ^1.0.1
+  line_icons: ^2.0.3
+  adaptive_action_sheet: ^2.0.3
+  cupertino_icons: ^1.0.8
+  shared_preferences: ^2.2.3
+  provider: ^6.1.2
+  flutter_platform_widgets: ^7.0.0
+  uuid: ^4.4.0
+  auto_size_text: ^3.0.0
+  currency_picker: ^2.0.21
+  package_info_plus: ^8.0.0
+  device_info_plus: ^10.1.0
+  flutter_email_sender: ^6.0.3
+  url_launcher: ^6.2.6 # needs Info.plist modification
+  flutter_launcher_icons: ^0.13.1
+  flutter_native_splash: ^2.4.0
+  google_mobile_ads: ^5.1.0
+  tutorial_coach_mark: ^1.2.11
+  # showcaseview: ^2.1.0
+  intl: ^0.19.0
+
+# generate new splashscreen: flutter pub run flutter_native_splash:create
+# flutter pub run flutter_native_splash:remove
+flutter_native_splash:
+  image: assets/images/icon.png
+  color: '153952'
+  fill_horizontal: true
+
+# generate new icon: flutter pub run flutter_launcher_icons:main
+flutter_icons:
+  android: true
+  ios: true
+  image_path: assets/images/icon-white.png
+  #  adaptive_icon_background: assets/images/icon.png
+  #  adaptive_icon_background: '281B60'
+  #  image_path_ios: 'assets/images/icon.png'
+  #  image_pathandroid: 'assets/images/icon.png'
+  #  adaptive_icon_foreground: assets/images/icon.png
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^4.0.0
+
+flutter:
+
+  uses-material-design: true
+  assets:
+    - assets/i18n/
+    - assets/fonts/
+    - assets/images/
+    - assets/images/other-apps/
+
+  fonts:
+    - family: MontserratMedium
+      fonts:
+        - asset: assets/fonts/Montserrat-Medium.ttf
