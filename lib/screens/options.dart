@@ -193,7 +193,7 @@ class _OptionsScreenState extends State<OptionsScreen> {
         PackageInfo packageInfo = await PackageInfo.fromPlatform();
         return showAboutDialog(
           context: context,
-          applicationName: 'Profits',
+          applicationName: 'Lucra',
           applicationVersion: packageInfo.version,
           children: [
             const Image(

@@ -11,6 +11,8 @@ import 'package:lucra/screens/balances.dart';
 import 'package:lucra/screens/options.dart';
 import 'package:lucra/screens/resume.dart';
 import 'package:lucra/tour_target.dart';
+import 'package:motion_tab_bar/MotionTabBar.dart';
+import 'package:motion_tab_bar/MotionTabBarController.dart';
 import 'package:provider/provider.dart';
 import 'package:tutorial_coach_mark/tutorial_coach_mark.dart';
 
@@ -23,16 +25,22 @@ class LandingPage extends StatefulWidget {
 
 class _LandingPageState extends State<LandingPage>
     with TickerProviderStateMixin {
-  late TabController _leaseTabController;
   static int _index = 1;
   // steps
   late TutorialCoachMark tutorialCoachMark;
   GlobalKey navigationBalances = GlobalKey();
   GlobalKey incomeCard = GlobalKey();
+  late MotionTabBarController _motionTabBarController;
 
   @override
   void initState() {
     super.initState();
+    _motionTabBarController = MotionTabBarController(
+      initialIndex: _index,
+      length: 3,
+      vsync: this,
+    );
+    _motionTabBarController.addListener(_handleTabSelection);
     init();
     // Another showcase method
     // steps
@@ -47,8 +55,8 @@ class _LandingPageState extends State<LandingPage>
 
   @override
   void dispose() {
-    _leaseTabController.dispose();
     super.dispose();
+    _motionTabBarController.dispose();
   }
 
   void showTutorial() {
@@ -98,18 +106,17 @@ class _LandingPageState extends State<LandingPage>
 
   _handleTabSelection() {
     setState(() {
-      _index = _leaseTabController.index;
+      _index = _motionTabBarController.index;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    _leaseTabController = TabController(
-      vsync: this,
-      initialIndex: _index, // avoid error when we log out
-      length: 3,
-    );
-    _leaseTabController.addListener(_handleTabSelection);
+    // _motionTabBarController = TabController(
+    //   vsync: this,
+    //   initialIndex: _index, // avoid error when we log out
+    //   length: 3,
+    // );
 
     return tabs();
   }
@@ -119,7 +126,7 @@ class _LandingPageState extends State<LandingPage>
       body: SafeArea(
         child: NotificationListener(
           child: TabBarView(
-            controller: _leaseTabController,
+            controller: _motionTabBarController,
             children: <Widget>[
               const OptionsScreen(),
               BalancesScreen(incomeCardKey: incomeCard),
@@ -137,69 +144,36 @@ class _LandingPageState extends State<LandingPage>
           ),
         ),
       ),
-      bottomNavigationBar: Container(
-        width: double.infinity,
-        color: Theme.of(context).primaryColor,
-        child: TabBar(
-          isScrollable: true,
-          controller: _leaseTabController,
-          indicator: const UnderlineTabIndicator(
-            borderSide: BorderSide(
-              width: 5.0,
-              color: Colors.white,
-            ),
-          ),
-          tabs: [
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 8),
-              child: Tab(
-                child: Icon(LineIcons.cog, color: Colors.white),
-              ),
-            ),
-            // TODO: find another package
-            // Showcase(
-            //   key: navigationBalances,
-            //   description:
-            //       'This is your balances page. In here, you will find different expenses and incomes.',
-            //   onBarrierClick: () => debugPrint('Barrier clicked'),
-            //   child:
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8),
-              child: Tab(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    const Icon(LineIcons.list, color: Colors.white),
-                    Container(width: 10),
-                    Text(
-                      translate('balances'),
-                      style: const TextStyle(color: Colors.white),
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            // ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8),
-              child: Tab(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    const Icon(LineIcons.coins, color: Colors.white),
-                    Container(width: 10),
-                    Text(
-                      translate('total'),
-                      style: const TextStyle(color: Colors.white),
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
+      bottomNavigationBar: MotionTabBar(
+        controller:
+            _motionTabBarController, // ADD THIS if you need to change your tab programmatically
+        initialSelectedTab: translate('balances'),
+        labels: [
+          translate('options'),
+          translate('balances'),
+          translate('total')
+        ],
+        icons: const [LineIcons.cog, LineIcons.list, LineIcons.coins],
+        // optional badges, length must be same with labels
+        tabSize: 50,
+        tabBarHeight: 55,
+        textStyle: const TextStyle(
+          fontSize: 12,
+          color: Colors.black,
+          fontWeight: FontWeight.w500,
         ),
+        tabIconColor: Colors.blue[600],
+        tabIconSize: 28.0,
+        tabIconSelectedSize: 26.0,
+        tabSelectedColor: Colors.blue[900],
+        tabIconSelectedColor: Colors.white,
+        tabBarColor: Colors.white,
+        onTabItemSelected: (int value) {
+          setState(() {
+            // _tabController!.index = value;
+            _motionTabBarController.index = value;
+          });
+        },
       ),
     );
   }
