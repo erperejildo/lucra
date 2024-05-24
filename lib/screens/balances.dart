@@ -120,7 +120,7 @@ class _BalancesScreenState extends State<BalancesScreen> {
           padding: const EdgeInsets.all(8.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               AutoSizeText(
                 balance.title,
@@ -132,7 +132,6 @@ class _BalancesScreenState extends State<BalancesScreen> {
                 maxLines: 2,
               ),
               Column(
-                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   FittedBox(
                     fit: BoxFit.contain,
@@ -151,7 +150,6 @@ class _BalancesScreenState extends State<BalancesScreen> {
                         .toLowerCase(),
                     style: const TextStyle(color: Colors.white, fontSize: 12),
                   ),
-                  Container(height: 5),
                   FittedBox(
                     fit: BoxFit.contain,
                     child: Text(

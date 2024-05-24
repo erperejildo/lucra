@@ -112,10 +112,10 @@ class _MyAppState extends State<MyApp> {
 }
 
 detectFirstTime() async {
-  var lucraPrefs = prefs.get('lucra');
+  var lucraPrefs = prefs.get('profits');
   if (lucraPrefs == null) {
     initialRoute = '/slides';
     var encodedMap = json.encode({'balanceGroups': []});
-    await prefs.setString('lucra', encodedMap.toString());
+    await prefs.setString('profits', encodedMap.toString());
   }
 }
