@@ -137,6 +137,7 @@ class _LandingPageState extends State<LandingPage>
                   balance: 0,
                   fromDate: DateTime.now().toString(),
                   timesAYear: 1,
+                  image: '',
                 ),
                 global: true,
               ),

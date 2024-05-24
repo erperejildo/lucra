@@ -4,6 +4,7 @@ import 'package:flutter_translate/flutter_translate.dart';
 import 'package:intl/intl.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:lucra/helpers/helpers.dart';
+import 'package:lucra/models/balance.dart';
 import 'package:lucra/providers/balance_groups.dart';
 import 'package:provider/provider.dart';
 
@@ -108,65 +109,121 @@ class _BalancesScreenState extends State<BalancesScreen> {
     );
   }
 
-  Widget balanceCard(BuildContext context, balance) {
+  Widget balanceCard(BuildContext context, Balance balance) {
     return GestureDetector(
       onPanDown: (_) =>
           Navigator.of(context).pushNamed('/resume', arguments: balance),
       child: Card(
-        // key: balance.balance > 0 ? widget.incomeCardKey : null,
-        color: balance.balance > 0 ? Colors.green[800] : Colors.red[800],
+        semanticContainer: true,
+        clipBehavior: Clip.antiAliasWithSaveLayer,
+        color: (balance.image.isNotEmpty
+            ? Colors.transparent
+            : balance.balance > 0
+                ? Colors.green[800]
+                : Colors.red[800])!,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10.0),
+        ),
         elevation: 2,
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              AutoSizeText(
-                balance.title,
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                  fontSize: 14,
-                ),
-                maxLines: 2,
+        margin: const EdgeInsets.all(10),
+        child: Stack(
+          children: [
+            Visibility(
+              visible: balance.image.isNotEmpty,
+              child: Image.network(
+                balance.image,
+                errorBuilder: (context, error, stackTrace) {
+                  return const Center(
+                    child: Icon(
+                      Icons.error_outline,
+                      color: Colors.red,
+                      size: 48.0,
+                    ),
+                  );
+                },
+                fit: BoxFit.cover,
+                width: double.infinity,
+                height: double.infinity,
               ),
-              Column(
+            ),
+            Padding(
+              padding: EdgeInsets.all(balance.image.isNotEmpty ? 0 : 8),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                mainAxisAlignment: balance.image.isEmpty
+                    ? MainAxisAlignment.spaceAround
+                    : MainAxisAlignment.end,
                 children: [
-                  FittedBox(
-                    fit: BoxFit.contain,
-                    child: Text(
-                      balance.balance.toString(),
-                      textAlign: TextAlign.justify,
-                      style: const TextStyle(
-                        color: Colors.white,
+                  Visibility(
+                    visible: balance.image.isEmpty,
+                    child: AutoSizeText(
+                      balance.title,
+                      style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 18,
+                        color: textColor(balance),
+                        fontSize: 14,
                       ),
+                      maxLines: 2,
                     ),
                   ),
-                  Text(
-                    translate(Helpers.showFrequency(balance.timesAYear))
-                        .toLowerCase(),
-                    style: const TextStyle(color: Colors.white, fontSize: 12),
-                  ),
-                  FittedBox(
-                    fit: BoxFit.contain,
-                    child: Text(
-                      translate('since') +
-                          ' ' +
-                          DateFormat.yMMMd()
-                              .format(DateTime.parse(balance.fromDate)),
-                      textAlign: TextAlign.justify,
-                      style: const TextStyle(color: Colors.white, fontSize: 12),
-                    ),
+                  Column(
+                    children: [
+                      Container(
+                        color: balance.image.isNotEmpty
+                            ? Colors.black.withOpacity(0.7)
+                            : Colors.transparent,
+                        width: double.infinity,
+                        padding:
+                            EdgeInsets.symmetric(vertical: 0, horizontal: 16),
+                        child: FittedBox(
+                          fit: BoxFit.contain,
+                          child: Text(
+                            balance.balance.toString(),
+                            textAlign: TextAlign.justify,
+                            style: TextStyle(
+                              color: textColor(balance),
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Visibility(
+                        visible: balance.image.isEmpty,
+                        child: Text(
+                          translate(Helpers.showFrequency(balance.timesAYear))
+                              .toLowerCase(),
+                          style: TextStyle(
+                              color: textColor(balance),
+                              fontSize: 12,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      Visibility(
+                        visible: balance.image.isEmpty,
+                        child: FittedBox(
+                          fit: BoxFit.contain,
+                          child: Text(
+                            '${translate('since')} ${DateFormat.yMMMd().format(DateTime.parse(balance.fromDate))}',
+                            textAlign: TextAlign.justify,
+                            style: TextStyle(
+                                color: textColor(balance), fontSize: 12),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
+  }
+
+  Color textColor(Balance balance) {
+    return balance.image.isEmpty
+        ? Colors.white
+        : (balance.balance > 0 ? Colors.green : Colors.red);
   }
 }

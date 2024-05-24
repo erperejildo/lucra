@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_translate/flutter_translate.dart';
 import 'package:intl/intl.dart';
 import 'package:line_icons/line_icons.dart';
@@ -28,6 +29,7 @@ class _NewBalanceScreenState extends State<NewBalanceScreen> {
   final TextEditingController _dateController = TextEditingController();
   final TextEditingController _numberController = TextEditingController();
   final TextEditingController _titleController = TextEditingController();
+  final TextEditingController _imageController = TextEditingController();
   List<Map> periodsDropdown = [
     // {
     //   "name": "one_off",
@@ -72,6 +74,7 @@ class _NewBalanceScreenState extends State<NewBalanceScreen> {
           .format(DateTime.parse(widget.balance!.fromDate.toString()));
       _numberController.text = widget.balance!.balance.toString();
       _titleController.text = widget.balance!.title;
+      _imageController.text = widget.balance!.image;
       calculate();
     }
   }
@@ -133,6 +136,7 @@ class _NewBalanceScreenState extends State<NewBalanceScreen> {
           initialDate(),
           profit(),
           title(),
+          image(),
           total(),
         ],
       ),
@@ -204,6 +208,30 @@ class _NewBalanceScreenState extends State<NewBalanceScreen> {
     );
   }
 
+  Widget image() {
+    return ListTile(
+      leading: const Icon(LineIcons.image),
+      title: TextFormField(
+        controller: _imageController,
+        decoration: InputDecoration(
+          labelText: translate('image'),
+          hintText: translate('paste_url'),
+        ),
+        keyboardType: TextInputType.text,
+        validator: (value) {
+          return Validators.checkUrl(value!);
+        },
+      ),
+      trailing: IconButton(
+        icon: const Icon(LineIcons.paste),
+        onPressed: () async {
+          var url = await Clipboard.getData(Clipboard.kTextPlain);
+          _imageController.text = url!.text ?? '';
+        },
+      ),
+    );
+  }
+
   bool isBalanceReady() {
     if (fromDate == null ||
         _numberController.text.isEmpty ||
@@ -225,6 +253,7 @@ class _NewBalanceScreenState extends State<NewBalanceScreen> {
       balance: double.parse(_numberController.text),
       fromDate: fromDate.toString(),
       timesAYear: _period,
+      image: _imageController.text,
     );
 
     setState(() {
@@ -245,6 +274,7 @@ class _NewBalanceScreenState extends State<NewBalanceScreen> {
         balance: double.parse(_numberController.text),
         fromDate: fromDate.toString(),
         timesAYear: _period,
+        image: _imageController.text,
       );
       if (mounted) {
         setState(() {

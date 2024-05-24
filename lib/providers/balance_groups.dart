@@ -28,6 +28,7 @@ class BalanceGroups extends ChangeNotifier {
           balance: balance['balance'],
           fromDate: balance['fromDate'],
           timesAYear: balance['timesAYear'],
+          image: balance['image'] ?? '',
         ),
       );
     }

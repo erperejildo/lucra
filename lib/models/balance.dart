@@ -4,6 +4,7 @@ class Balance {
   double balance;
   String fromDate;
   int timesAYear;
+  String image;
 
   Balance({
     required this.id,
@@ -11,6 +12,7 @@ class Balance {
     required this.balance,
     required this.fromDate,
     required this.timesAYear,
+    required this.image,
   });
 
   Map<String, dynamic> toMap() {
@@ -20,6 +22,7 @@ class Balance {
       'balance': balance,
       'fromDate': fromDate,
       'timesAYear': timesAYear,
+      'image': image,
     };
   }
 }

@@ -48,4 +48,16 @@ class Validators {
       return translate('sign.need_chars');
     }
   }
+
+  static checkUrl(String value) {
+    value = value.replaceAll(RegExp(' +'), ' ');
+    if (value.isEmpty || value == ' ' || value == '') {
+      return null;
+    }
+    bool validURL = Uri.parse(value).isAbsolute;
+    if (validURL != true) {
+      return translate('valid_url');
+    }
+    return null;
+  }
 }

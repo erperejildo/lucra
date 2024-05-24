@@ -18,6 +18,7 @@ final List<Balance> demoBalanceGroups = [
     // fromDate: DateFormat.yMMMd().format(DateTime.now()),
     fromDate: formatedDate.toString(),
     timesAYear: 1,
+    image: '',
   ),
   Balance(
     id: const Uuid().v4(),
@@ -31,5 +32,6 @@ final List<Balance> demoBalanceGroups = [
       0, // minute
     ).toString(),
     timesAYear: 12,
+    image: '',
   ),
 ];

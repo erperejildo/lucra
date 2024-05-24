@@ -83,7 +83,26 @@ class _RealBalanceState extends State<RealBalance> {
                 style: textStyle,
               ),
             ),
-            Container(height: 50),
+            Container(height: 25),
+            Visibility(
+              visible: widget.balance.image.isNotEmpty,
+              child: Image.network(
+                widget.balance.image,
+                errorBuilder: (context, error, stackTrace) {
+                  return const Center(
+                    child: Icon(
+                      Icons.error_outline,
+                      color: Colors.red,
+                      size: 48.0,
+                    ),
+                  );
+                },
+                fit: BoxFit.cover,
+                width: 100,
+                height: 100,
+              ),
+            ),
+            Container(height: 25),
             Table(
               children: [
                 TableRow(
