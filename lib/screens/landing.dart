@@ -10,6 +10,7 @@ import 'package:lucra/providers/balance_groups.dart';
 import 'package:lucra/screens/balances.dart';
 import 'package:lucra/screens/options.dart';
 import 'package:lucra/screens/resume.dart';
+import 'package:lucra/services/shop.dart';
 import 'package:lucra/tour_target.dart';
 import 'package:motion_tab_bar/MotionTabBar.dart';
 import 'package:motion_tab_bar/MotionTabBarController.dart';
@@ -41,6 +42,7 @@ class _LandingPageState extends State<LandingPage>
       vsync: this,
     );
     _motionTabBarController.addListener(_handleTabSelection);
+    shop.getProduct(context);
     init();
     // Another showcase method
     // steps
@@ -117,65 +119,94 @@ class _LandingPageState extends State<LandingPage>
     //   initialIndex: _index, // avoid error when we log out
     //   length: 3,
     // );
-
     return tabs();
   }
 
   Widget tabs() {
     return Scaffold(
-      body: SafeArea(
-        child: NotificationListener(
-          child: TabBarView(
-            controller: _motionTabBarController,
-            children: <Widget>[
-              const OptionsScreen(),
-              BalancesScreen(incomeCardKey: incomeCard),
-              ResumeScreen(
-                balance: Balance(
-                  id: "",
-                  title: "",
-                  balance: 0,
-                  fromDate: DateTime.now().toString(),
-                  timesAYear: 1,
-                  image: '',
-                ),
-                global: true,
+      body: NotificationListener(
+        child: TabBarView(
+          controller: _motionTabBarController,
+          children: <Widget>[
+            const OptionsScreen(),
+            BalancesScreen(incomeCardKey: incomeCard),
+            ResumeScreen(
+              balance: Balance(
+                id: "",
+                title: "",
+                balance: 0,
+                fromDate: DateTime.now().toString(),
+                timesAYear: 1,
+                image: '',
               ),
-            ],
-          ),
+              global: true,
+            ),
+          ],
         ),
       ),
-      bottomNavigationBar: MotionTabBar(
-        controller:
-            _motionTabBarController, // ADD THIS if you need to change your tab programmatically
-        initialSelectedTab: translate('balances'),
-        labels: [
-          translate('options'),
-          translate('balances'),
-          translate('total')
-        ],
-        icons: const [LineIcons.cog, LineIcons.list, LineIcons.coins],
-        // optional badges, length must be same with labels
-        tabSize: 50,
-        tabBarHeight: 55,
-        textStyle: const TextStyle(
-          fontSize: 12,
-          color: Colors.black,
-          fontWeight: FontWeight.w500,
-        ),
-        tabIconColor: Colors.blue[600],
-        tabIconSize: 28.0,
-        tabIconSelectedSize: 26.0,
-        tabSelectedColor: Colors.blue[900],
-        tabIconSelectedColor: Colors.white,
-        tabBarColor: Colors.white,
-        onTabItemSelected: (int value) {
-          setState(() {
-            // _tabController!.index = value;
-            _motionTabBarController.index = value;
-          });
-        },
-      ),
+      bottomNavigationBar: navigationBar(),
     );
+  }
+
+  Widget navigationBar() {
+    return MotionTabBar(
+      controller: _motionTabBarController,
+      initialSelectedTab: translate('balances'),
+      labels: [translate('options'), translate('balances'), translate('total')],
+      icons: const [LineIcons.cog, LineIcons.list, LineIcons.coins],
+      // optional badges, length must be same with labels
+      tabSize: 50,
+      tabBarHeight: 55,
+      textStyle: const TextStyle(
+        fontSize: 12,
+        color: Colors.black,
+        fontWeight: FontWeight.w500,
+      ),
+      tabIconColor: Colors.blue[600],
+      tabIconSize: 28.0,
+      tabIconSelectedSize: 26.0,
+      tabSelectedColor: Colors.blue[900],
+      tabIconSelectedColor: Colors.white,
+      tabBarColor: Colors.white,
+      onTabItemSelected: (int value) {
+        setState(() {
+          // _tabController!.index = value;
+          _motionTabBarController.index = value;
+        });
+      },
+    );
+    // return SnakeNavigationBar.color(
+    //   // behaviour: snakeBarStyle,
+    //   // snakeShape: snakeShape,
+    //   // shape: bottomBarShape,
+    //   // padding: padding,
+
+    //   ///configuration for SnakeNavigationBar.color
+    //   // snakeViewColor: selectedColor,
+    //   // selectedItemColor:
+    //   //     snakeShape == SnakeShape.indicator ? selectedColor : null,
+    //   unselectedItemColor: Colors.blueGrey,
+
+    //   ///configuration for SnakeNavigationBar.gradient
+    //   //snakeViewGradient: selectedGradient,
+    //   //selectedItemGradient: snakeShape == SnakeShape.indicator ? selectedGradient : null,
+    //   //unselectedItemGradient: unselectedGradient,
+
+    //   showUnselectedLabels: false,
+    //   showSelectedLabels: true,
+
+    //   currentIndex: _index,
+    //   onTap: (index) => setState(() => _index = index),
+    //   items: [
+    //     BottomNavigationBarItem(
+    //         icon: Icon(Icons.notifications), label: 'tickets'),
+    //     BottomNavigationBarItem(
+    //         icon: Icon(LineIcons.calendar), label: 'calendar'),
+    //     BottomNavigationBarItem(icon: Icon(LineIcons.home), label: 'home'),
+    //     BottomNavigationBarItem(
+    //         icon: Icon(LineIcons.acquisitionsIncorporated), label: 'microphone'),
+    //     BottomNavigationBarItem(icon: Icon(LineIcons.search), label: 'search')
+    //   ],
+    // );
   }
 }

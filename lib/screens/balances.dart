@@ -25,26 +25,24 @@ class _BalancesScreenState extends State<BalancesScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          automaticallyImplyLeading: false, // no back button
-          title: Text(translate('balances')),
-          actions: <Widget>[
-            addButton(),
-            // TextButton(
-            //   onPressed: () {
-            //     Provider.of<AdState>(context, listen: false).checkInit();
-            //   },
-            //   child: Text(
-            //     "Show ads",
-            //     style: TextStyle(color: Colors.red),
-            //   ),
-            // ),
-          ],
-        ),
-        body: listContainer(),
+    return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false, // no back button
+        title: Text(translate('balances')),
+        actions: <Widget>[
+          addButton(),
+          // TextButton(
+          //   onPressed: () {
+          //     Provider.of<AdState>(context, listen: false).checkInit();
+          //   },
+          //   child: Text(
+          //     "Show ads",
+          //     style: TextStyle(color: Colors.red),
+          //   ),
+          // ),
+        ],
       ),
+      body: listContainer(),
     );
   }
 

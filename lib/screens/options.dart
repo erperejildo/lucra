@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_translate/flutter_translate.dart';
 import 'package:intl/intl.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:lucra/services/shop.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:lucra/helpers/helpers.dart';
 import 'package:lucra/locales.dart';
@@ -65,6 +66,7 @@ class _OptionsScreenState extends State<OptionsScreen> {
           decimals(),
           language(),
           currency(),
+          buyVersion(),
           contactUs(),
           otherApps(),
           aboutUs(),
@@ -155,6 +157,17 @@ class _OptionsScreenState extends State<OptionsScreen> {
           },
           favorite: [_options['currency']],
         );
+      },
+    );
+  }
+
+  Widget buyVersion() {
+    return ListTile(
+      leading: const Icon(LineIcons.shoppingCart),
+      title: Text(translate('buy')),
+      subtitle: Text(translate('buy_desc')),
+      onTap: () async {
+        await shop.buyProduct(shop.products[0]);
       },
     );
   }

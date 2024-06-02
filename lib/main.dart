@@ -71,38 +71,19 @@ class _MyAppState extends State<MyApp> {
         ),
         // TODO: find another package
         home: LandingPage(),
-        // ShowCaseWidget(
-        //   onStart: (index, key) {
-        //     // print('onStart: $index, $key');
-        //   },
-        //   onComplete: (index, key) {
-        //     // log('onComplete: $index, $key');
-        //     // if (index == 4) {
-        //     //   SystemChrome.setSystemUIOverlayStyle(
-        //     //     SystemUiOverlayStyle.light.copyWith(
-        //     //       statusBarIconBrightness: Brightness.dark,
-        //     //       statusBarColor: Colors.white,
-        //     //     ),
-        //     //   );
-        //     // }
-        //   },
-        //   blurValue: 1,
-        //   autoPlayDelay: const Duration(seconds: 3),
-        //   builder: Builder(
-        //     builder: (context) => LandingPage(),
-        //   ),
-        // ),
         builder: (BuildContext context, child) {
           return Scaffold(
             backgroundColor: Colors.black,
-            body: Column(
-              children: [
-                Provider.of<Ads>(context).showAds &&
-                        Provider.of<Ads>(context).isBannerReady
-                    ? Provider.of<Ads>(context).showBanner()
-                    : Container(),
-                Expanded(child: child!),
-              ],
+            body: SafeArea(
+              child: Column(
+                children: [
+                  Provider.of<Ads>(context).showAds &&
+                          Provider.of<Ads>(context).isBannerReady
+                      ? Provider.of<Ads>(context).showBanner()
+                      : Container(),
+                  Expanded(child: child!),
+                ],
+              ),
             ),
           );
         },

@@ -24,6 +24,8 @@
   "earned": "Earned",
   "paid": "Paid",
   "since": "since",
+  "buy": "Buy version",
+  "buy_desc": "Removes ads forever",
   "per_second": "per second",
   "per_minute": "per minute",
   "per_hour": "per hour",
