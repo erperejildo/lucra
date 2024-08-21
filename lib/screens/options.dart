@@ -6,12 +6,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_translate/flutter_translate.dart';
 import 'package:intl/intl.dart';
 import 'package:line_icons/line_icons.dart';
-import 'package:lucra/services/shop.dart';
-import 'package:package_info_plus/package_info_plus.dart';
 import 'package:lucra/helpers/helpers.dart';
 import 'package:lucra/locales.dart';
 import 'package:lucra/main.dart';
+import 'package:lucra/providers/ads.dart';
 import 'package:lucra/services/loading.dart';
+import 'package:lucra/services/shop.dart';
+import 'package:package_info_plus/package_info_plus.dart';
+import 'package:provider/provider.dart';
 
 class OptionsScreen extends StatefulWidget {
   const OptionsScreen({Key? key}) : super(key: key);
@@ -66,10 +68,10 @@ class _OptionsScreenState extends State<OptionsScreen> {
           decimals(),
           language(),
           currency(),
-          buyVersion(),
           contactUs(),
           otherApps(),
           aboutUs(),
+          buyVersion(),
         ],
       ),
     );
@@ -162,13 +164,23 @@ class _OptionsScreenState extends State<OptionsScreen> {
   }
 
   Widget buyVersion() {
-    return ListTile(
-      leading: const Icon(LineIcons.shoppingCart),
-      title: Text(translate('buy')),
-      subtitle: Text(translate('buy_desc')),
-      onTap: () async {
-        await shop.buyProduct(shop.products[0]);
-      },
+    return Visibility(
+      visible: Provider.of<Ads>(context).showingAds,
+      child: ListTile(
+        tileColor: Theme.of(context).primaryColor,
+        leading: const Icon(LineIcons.shoppingCart, color: Colors.white),
+        title: Text(
+          translate('buy'),
+          style: const TextStyle(color: Colors.white),
+        ),
+        subtitle: Text(
+          translate('buy_desc'),
+          style: const TextStyle(color: Colors.white),
+        ),
+        onTap: () async {
+          await shop.buyProduct(shop.products[0]);
+        },
+      ),
     );
   }
 

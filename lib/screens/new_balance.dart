@@ -9,6 +9,7 @@ import 'package:lucra/helpers/helpers.dart';
 import 'package:lucra/helpers/validators.dart';
 import 'package:lucra/models/balance.dart';
 import 'package:lucra/models/real_money.dart';
+import 'package:lucra/providers/ads.dart';
 import 'package:lucra/providers/balance_groups.dart';
 import 'package:lucra/widgets/real_balance.dart';
 import 'package:provider/provider.dart';
@@ -107,7 +108,7 @@ class _NewBalanceScreenState extends State<NewBalanceScreen> {
       child: IconButton(
         onPressed: () async {
           if (_formKey.currentState!.validate()) {
-            // Provider.of<AdState>(context, listen: false).showInterstitialAd();
+            Provider.of<Ads>(context, listen: false).showInterstitialAd();
             if (newBalance) {
               await Provider.of<BalanceGroups>(context, listen: false)
                   .addBalance(widget.balance!);

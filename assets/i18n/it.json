@@ -5,8 +5,8 @@
     "keywords": "profitti, mutuo, affitto, investimento, denaro, stipendio, risparmi"
   },
   "fill_field": "Compila questo campo",
-  "salary_example": "Stipendio (esempio)",
-  "mortgage_example": "Mutuo (esempio)",
+  "salary_example": "Stipendio",
+  "mortgage_example": "Mutuo",
   "cancel": "Annulla",
   "ok": "Ok",
   "yes": "sì",

@@ -2,11 +2,11 @@
   "store": {
     "description_short": "Tu saldo en tiempo real",
     "description0": "¿Alguna vez has pensado en tus ganancias por segundo? ¿O comprender cómo suscribirse a algo afectaría tus finanzas?\n\nSueldo, facturas, inversiones, ahorros, pagos de la hipoteca y otras obligaciones pueden ser estresantes porque son muchos.\n\nCon Lucra, puedes verlos todos a la vez y realizar un seguimiento de tus ganancias y gastos en tiempo real sin realizar ningún cálculo adicional. También se muestra un balance completo de todo.\n\nAunque no puedes ahorrar dinero con nosotros, al menos puede ahorre algo de tiempo.",
-    "keywords": "ganancias, hipoteca, alquiler, inversión, dinero, salario, ahorra"
+    "keywords": "ganancias, hipoteca, alquiler, inversión, dinero, sueldo, ahorra"
   },
   "fill_field": "Rellena este campo",
-  "salary_example": "Sueldo (ejemplo)",
-  "mortgage_example": "Hipoteca (ejemplo)",
+  "salary_example": "Sueldo",
+  "mortgage_example": "Hipoteca",
   "cancel": "Cancelar",
   "ok": "OK",
   "yes": "sí",
@@ -46,7 +46,7 @@
   "amount_per_period": "Importe por período",
   "expense_desc": "para gastos usa valores negativos",
   "name": "Nombre",
-  "salary": "Salario",
+  "salary": "Sueldo",
   "delete_title": "Eliminar saldo",
   "delete_desc": "Este saldo será eliminado de tu lista",
   "language": "Idioma",
@@ -71,8 +71,8 @@
     "title0": "El saldo de tu cuenta siempre actualizado",
     "description0": "Lleva un registro de tus gastos y ahorros para que puedas ver cuánto estás gastando y ahorrando en tiempo real",
     "title1": "Evita cualquier cálculo",
-    "description1": "No es necesario realizar ningún cálculo. Añade tu salario, otras fuentes de ingresos, así como tus gastos de salida (gimnasio, seguro, hipoteca, etc.). El saldo de tu cuenta se mostrará por año, mes, día, hora, minuto e incluso por segundo",
+    "description1": "No es necesario realizar ningún cálculo. Añade tu sueldo, otras fuentes de ingresos, así como tus gastos de salida (gimnasio, seguro, hipoteca, etc.). El saldo de tu cuenta se mostrará por año, mes, día, hora, minuto e incluso por segundo",
     "title2": "Te tenemos cubierto",
-    "description2": "Como ejemplos, hemos agregado un salario (en verde) y una hipoteca (en rojo) a Saldos. Al hacer clic en cualquiera de ellos, verás tus saldos individuales en tiempo real. También tienes la opción de ver todo en la vista Total. Actualízalos o elimínalos, luego agrega los tuyos"
+    "description2": "Como ejemplo, hemos agregado un sueldo (en verde) y una hipoteca (en rojo) a Saldos. Al hacer clic en cualquiera de ellos, verás tus saldos individuales en tiempo real. También tienes la opción de ver todo en la vista Total. Actualízalos o elimínalos, luego agrega los tuyos"
   }
 }

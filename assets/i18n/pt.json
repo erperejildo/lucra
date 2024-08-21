@@ -5,8 +5,8 @@
     "keywords": "lucros, hipoteca, aluguel, investimento, dinheiro, salário, salva"
   },
   "fill_field": "Preencha este campo",
-  "salary_example": "Salário (exemplo)",
-  "mortgage_example": "Hipoteca (exemplo)",
+  "salary_example": "Salário",
+  "mortgage_example": "Hipoteca",
   "cancel": "Cancelar",
   "ok": "OK",
   "yes": "sim",

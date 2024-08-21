@@ -11,6 +11,7 @@ import 'package:lucra/route_generator.dart';
 import 'package:lucra/screens/landing.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:showcaseview/showcaseview.dart';
 
 String initialRoute = '/';
 late SharedPreferences prefs;
@@ -77,11 +78,23 @@ class _MyAppState extends State<MyApp> {
             body: SafeArea(
               child: Column(
                 children: [
-                  Provider.of<Ads>(context).showAds &&
-                          Provider.of<Ads>(context).isBannerReady
-                      ? Provider.of<Ads>(context).showBanner()
-                      : Container(),
-                  Expanded(child: child!),
+                  // Provider.of<Ads>(context).showingAds &&
+                  //         Provider.of<Ads>(context).isBannerReady
+                  //     ? Provider.of<Ads>(context).showBanner()
+                  //     : Container(),
+                  // Expanded(child: child!),
+                  ShowCaseWidget(
+                    onStart: (index, key) {
+                      debugPrint('onStart: $index, $key');
+                    },
+                    onComplete: (index, key) {
+                      debugPrint('onComplete: $index, $key');
+                      if (index == 4) {}
+                    },
+                    blurValue: 1,
+                    autoPlayDelay: const Duration(seconds: 3),
+                    builder: (context) => Expanded(child: child!),
+                  ),
                 ],
               ),
             ),

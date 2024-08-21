@@ -12,23 +12,28 @@ final adRewardedId =
 const int maxFailedLoadAttempts = 3;
 
 class Ads extends ChangeNotifier {
-  bool showAds = true;
+  bool showingAds = true;
   BannerAd? adBanner;
   InterstitialAd? interstitialAd;
   bool isBannerReady = false;
   bool isInterstitialReady = false;
   int numInterstitialLoadAttempts = 0;
 
-  initAds() async {
-    await MobileAds.instance.initialize();
-    loadBanner();
-    loadInterstitial();
+  Ads() {
+    initAds();
   }
 
-  hideShowAds(bool show) async {
-    showAds = show;
-    if (showAds) {
-      return initAds();
+  Future<void> initAds() async {
+    await MobileAds.instance.initialize();
+  }
+
+  void hideShowAds(bool show) {
+    showingAds = show;
+    if (showingAds) {
+      // loadBanner();
+      loadInterstitial(true);
+    } else {
+      disposeAds();
     }
     notifyListeners();
   }
@@ -55,7 +60,7 @@ class Ads extends ChangeNotifier {
     )..load();
   }
 
-  void loadInterstitial() {
+  void loadInterstitial([bool show = false]) {
     InterstitialAd.load(
       adUnitId: adInterstitialId,
       request: const AdRequest(),
@@ -64,6 +69,7 @@ class Ads extends ChangeNotifier {
           interstitialAd = ad;
           numInterstitialLoadAttempts = 0;
           interstitialAd!.setImmersiveMode(true);
+          if (show) showInterstitialAd();
         },
         onAdFailedToLoad: (LoadAdError error) {
           numInterstitialLoadAttempts += 1;
@@ -87,7 +93,7 @@ class Ads extends ChangeNotifier {
   }
 
   Future<void> showInterstitialAd() async {
-    if (!showAds || interstitialAd == null) {
+    if (!showingAds || interstitialAd == null) {
       return;
     }
 
@@ -104,6 +110,21 @@ class Ads extends ChangeNotifier {
     );
     await interstitialAd!.show();
     interstitialAd = null;
+  }
+
+  @override
+  void dispose() {
+    disposeAds();
+    super.dispose();
+  }
+
+  void disposeAds() {
+    adBanner?.dispose();
+    adBanner = null;
+    isBannerReady = false;
+    interstitialAd?.dispose();
+    interstitialAd = null;
+    isInterstitialReady = false;
   }
 }
 

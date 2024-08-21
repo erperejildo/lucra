@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:tutorial_coach_mark/tutorial_coach_mark.dart';
 
+List<TargetFocus> targets = [];
+
 List<TargetFocus> landingPageTargets({
   required GlobalKey navigationBalances,
   required GlobalKey incomeCard,
 }) {
-  List<TargetFocus> targets = [];
+  targets.clear();
 
   targets.add(
     TargetFocus(
@@ -37,6 +39,7 @@ List<TargetFocus> landingPageTargets({
   targets.add(
     TargetFocus(
       keyTarget: incomeCard,
+      identify: 'incomeCard',
       alignSkip: Alignment.topRight,
       enableOverlayTab: true,
       contents: [

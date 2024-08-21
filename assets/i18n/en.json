@@ -5,8 +5,8 @@
     "keywords": "Lucra, mortgage, rent, investment, money, salary, saves"
   },
   "fill_field": "Fill this field",
-  "salary_example": "Salary (example)",
-  "mortgage_example": "Mortgage (example)",
+  "salary_example": "Salary",
+  "mortgage_example": "Mortgage",
   "cancel": "Cancel",
   "ok": "Ok",
   "yes": "Yes",

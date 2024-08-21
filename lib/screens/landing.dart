@@ -46,12 +46,10 @@ class _LandingPageState extends State<LandingPage>
     init();
     // Another showcase method
     // steps
-    // createTutorial();
-    // Future.delayed(Duration.zero, showTutorial);
+    createTutorial();
     // method 2
     // WidgetsBinding.instance.addPostFrameCallback(
-    //   (_) => ShowCaseWidget.of(context)
-    //       .startShowCase([navigationBalances, incomeCard]),
+    //   (_) => ShowCaseWidget.of(context).startShowCase([incomeCard]),
     // );
   }
 
@@ -61,13 +59,8 @@ class _LandingPageState extends State<LandingPage>
     _motionTabBarController.dispose();
   }
 
-  void showTutorial() {
-    tutorialCoachMark.show(context: context);
-  }
-
   void createTutorial() {
     tutorialCoachMark = TutorialCoachMark(
-      // targets: _createTargets(),
       targets: landingPageTargets(
         navigationBalances: navigationBalances,
         incomeCard: incomeCard,
@@ -87,6 +80,7 @@ class _LandingPageState extends State<LandingPage>
         }
       },
     );
+    tutorialCoachMark.show(context: context);
   }
 
   init() async {
@@ -149,6 +143,7 @@ class _LandingPageState extends State<LandingPage>
   }
 
   Widget navigationBar() {
+    // return Text(key: navigationBalances, 'TESTING2');
     return MotionTabBar(
       controller: _motionTabBarController,
       initialSelectedTab: translate('balances'),

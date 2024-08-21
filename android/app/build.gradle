@@ -1,7 +1,6 @@
 plugins {
     id "com.android.application"
     id "kotlin-android"
-    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id "dev.flutter.flutter-gradle-plugin"
 }
 
@@ -24,9 +23,13 @@ if (flutterVersionName == null) {
 }
 
 def keystoreProperties = new Properties()
-def keystorePropertiesFile = rootProject.file('../../apps_keys/lucra/key.properties')
+def keystorePropertiesFile = rootProject.file('../../apps-keys/lucra/key.properties')
+println("Keystore properties file exists: ${keystorePropertiesFile.exists()}")
 if (keystorePropertiesFile.exists()) {
     keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+    println("Keystore properties loaded: ${keystoreProperties}")
+} else {
+    throw new GradleException("Keystore properties file not found: $keystorePropertiesFile")
 }
 
 android {
@@ -37,6 +40,10 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
     }
 
     defaultConfig {

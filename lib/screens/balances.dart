@@ -7,6 +7,7 @@ import 'package:lucra/helpers/helpers.dart';
 import 'package:lucra/models/balance.dart';
 import 'package:lucra/providers/balance_groups.dart';
 import 'package:provider/provider.dart';
+import 'package:showcaseview/showcaseview.dart';
 
 class BalancesScreen extends StatefulWidget {
   const BalancesScreen({Key? key, required this.incomeCardKey})
@@ -85,21 +86,21 @@ class _BalancesScreenState extends State<BalancesScreen> {
         Provider.of<BalanceGroups>(context, listen: false).list.length,
         (index) {
           // TODO: find a different package
-          // if (index == 0) {
-          //   return Showcase(
-          //     key: widget.incomeCardKey,
-          //     // enableAutoPlayLock: true,
-          //     disableBarrierInteraction: true,
-          //     description:
-          //         'This is your balances page. In here, you will find different expenses and incomes.',
-          //     onTargetClick: () => debugPrint('target clicked'),
-          //     disposeOnTap: true,
-          //     child: balanceCard(
-          //         context,
-          //         Provider.of<BalanceGroups>(context, listen: false)
-          //             .list[index]),
-          //   );
-          // }
+          if (index == 0) {
+            return Showcase(
+              key: widget.incomeCardKey,
+              disableBarrierInteraction: true,
+              disableDefaultTargetGestures: true,
+              description:
+                  'This is your balances page. In here, you will find different expenses and incomes.',
+              onTargetClick: () => debugPrint('target clicked'),
+              disposeOnTap: false,
+              child: balanceCard(
+                  context,
+                  Provider.of<BalanceGroups>(context, listen: false)
+                      .list[index]),
+            );
+          }
           return balanceCard(context,
               Provider.of<BalanceGroups>(context, listen: false).list[index]);
         },
@@ -152,68 +153,84 @@ class _BalancesScreenState extends State<BalancesScreen> {
                     ? MainAxisAlignment.spaceAround
                     : MainAxisAlignment.end,
                 children: [
-                  Visibility(
-                    visible: balance.image.isEmpty,
-                    child: AutoSizeText(
-                      balance.title,
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: textColor(balance),
-                        fontSize: 14,
-                      ),
-                      maxLines: 2,
-                    ),
-                  ),
+                  title(balance),
                   Column(
                     children: [
-                      Container(
-                        color: balance.image.isNotEmpty
-                            ? Colors.black.withOpacity(0.7)
-                            : Colors.transparent,
-                        width: double.infinity,
-                        padding:
-                            EdgeInsets.symmetric(vertical: 0, horizontal: 16),
-                        child: FittedBox(
-                          fit: BoxFit.contain,
-                          child: Text(
-                            balance.balance.toString(),
-                            textAlign: TextAlign.justify,
-                            style: TextStyle(
-                              color: textColor(balance),
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ),
-                      Visibility(
-                        visible: balance.image.isEmpty,
-                        child: Text(
-                          translate(Helpers.showFrequency(balance.timesAYear))
-                              .toLowerCase(),
-                          style: TextStyle(
-                              color: textColor(balance),
-                              fontSize: 12,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                      Visibility(
-                        visible: balance.image.isEmpty,
-                        child: FittedBox(
-                          fit: BoxFit.contain,
-                          child: Text(
-                            '${translate('since')} ${DateFormat.yMMMd().format(DateTime.parse(balance.fromDate))}',
-                            textAlign: TextAlign.justify,
-                            style: TextStyle(
-                                color: textColor(balance), fontSize: 12),
-                          ),
-                        ),
-                      ),
+                      price(balance),
+                      frequency(balance),
+                      since(balance),
                     ],
                   ),
                 ],
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget title(Balance balance) {
+    return Visibility(
+      visible: balance.image.isEmpty,
+      child: Align(
+        alignment: Alignment.centerLeft,
+        child: AutoSizeText(
+          balance.title,
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: textColor(balance),
+            fontSize: 12,
+          ),
+          maxLines: 2,
+        ),
+      ),
+    );
+  }
+
+  Widget price(Balance balance) {
+    return Container(
+      color: balance.image.isNotEmpty
+          ? Colors.black.withOpacity(0.7)
+          : Colors.transparent,
+      width: double.infinity,
+      padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 16),
+      child: FittedBox(
+        fit: BoxFit.contain,
+        child: Text(
+          balance.balance.toString(),
+          textAlign: TextAlign.justify,
+          style: TextStyle(
+            color: textColor(balance),
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget frequency(Balance balance) {
+    return Visibility(
+      visible: balance.image.isEmpty,
+      child: Text(
+        translate(Helpers.showFrequency(balance.timesAYear)).toLowerCase(),
+        style: TextStyle(
+            color: textColor(balance),
+            fontSize: 12,
+            fontWeight: FontWeight.bold),
+      ),
+    );
+  }
+
+  Widget since(Balance balance) {
+    return Visibility(
+      visible: balance.image.isEmpty,
+      child: FittedBox(
+        fit: BoxFit.contain,
+        child: Text(
+          '${translate('since')} ${DateFormat.yMMMd().format(DateTime.parse(balance.fromDate))}',
+          textAlign: TextAlign.justify,
+          style: TextStyle(color: textColor(balance), fontSize: 12),
         ),
       ),
     );
