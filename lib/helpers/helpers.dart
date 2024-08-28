@@ -5,12 +5,13 @@ import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_email_sender/flutter_email_sender.dart';
 import 'package:intl/intl.dart';
-import 'package:package_info_plus/package_info_plus.dart';
 import 'package:lucra/main.dart';
 import 'package:lucra/models/balance.dart';
 import 'package:lucra/models/real_money.dart';
 import 'package:lucra/providers/balance_groups.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Helpers {
   static TextStyle headerTitleStyle = TextStyle(
@@ -203,5 +204,16 @@ class Helpers {
     realMoney.untilNow = timeDiff.inSeconds * realMoney.second;
 
     return realMoney;
+  }
+
+  static Future<void> openGooglePlay() async {
+    final Uri url = Uri.parse(
+        "https://play.google.com/store/apps/details?id=com.drodriguez.profits");
+
+    if (await canLaunchUrl(url)) {
+      await launchUrl(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }

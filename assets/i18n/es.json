@@ -56,7 +56,11 @@
   "contact_us": "Contáctanos",
   "about_us": "Sobre nosotros",
   "invalid_number": "Número inválido",
-  "next": "Siguiente",
+  "next2": "Próximo",
+  "write_review_desc": "Hemos notado que te gusta Lucra. Sería genial si pudieras dejar una reseña.",
+  "maybe_later": "Quizás más tarde",
+  "dont_ask_again": "No, y no me vuelvas a preguntar",
+  "write_review": "Escribe una reseña",
   "other_apps": {
     "title": "Otras aplicaciones",
     "install": "Instalar",
@@ -66,7 +70,7 @@
     }
   },
   "slides": {
-    "skip": "Saltar",
+    "skip": "Omitir",
     "get_started": "¡Empezar!",
     "title0": "El saldo de tu cuenta siempre actualizado",
     "description0": "Lleva un registro de tus gastos y ahorros para que puedas ver cuánto estás gastando y ahorrando en tiempo real",

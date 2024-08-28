@@ -67,7 +67,8 @@ class _OptionsScreenState extends State<OptionsScreen> {
         children: [
           decimals(),
           language(),
-          currency(),
+          currency(),            feedback(),
+
           contactUs(),
           otherApps(),
           aboutUs(),
@@ -181,6 +182,17 @@ class _OptionsScreenState extends State<OptionsScreen> {
           await shop.buyProduct(shop.products[0]);
         },
       ),
+    );
+  }
+
+  Widget feedback() {
+    return ListTile(
+      leading: const Icon(LineIcons.comment),
+      title: Text(translate('options.write_review')),
+      trailing: const Icon(Icons.keyboard_arrow_right),
+      onTap: () async {
+        Helpers.openGooglePlay();
+      },
     );
   }
 

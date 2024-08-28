@@ -17,6 +17,8 @@ import 'package:motion_tab_bar/MotionTabBarController.dart';
 import 'package:provider/provider.dart';
 import 'package:tutorial_coach_mark/tutorial_coach_mark.dart';
 
+import '../widgets/review_dialog.dart';
+
 class LandingPage extends StatefulWidget {
   const LandingPage({Key? key}) : super(key: key);
 
@@ -31,6 +33,7 @@ class _LandingPageState extends State<LandingPage>
   late TutorialCoachMark tutorialCoachMark;
   GlobalKey navigationBalances = GlobalKey();
   GlobalKey incomeCard = GlobalKey();
+  GlobalKey expenseCard = GlobalKey();
   late MotionTabBarController _motionTabBarController;
 
   @override
@@ -47,6 +50,7 @@ class _LandingPageState extends State<LandingPage>
     // Another showcase method
     // steps
     createTutorial();
+    ReviewDialog().check(context);
     // method 2
     // WidgetsBinding.instance.addPostFrameCallback(
     //   (_) => ShowCaseWidget.of(context).startShowCase([incomeCard]),
@@ -64,19 +68,18 @@ class _LandingPageState extends State<LandingPage>
       targets: landingPageTargets(
         navigationBalances: navigationBalances,
         incomeCard: incomeCard,
+        expenseCard: expenseCard,
       ),
-      colorShadow: Colors.blue,
-      textSkip: "SKIP",
+      colorShadow: Colors.blue[900]!,
+      textSkip: translate('slides.skip').toUpperCase(),
       paddingFocus: 10,
       opacityShadow: 0.5,
       imageFilter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
       onClickTarget: (target) {
         // Check if the clicked target is the one you want to perform a specific action for
-        if (target.identify == "incomeCard") {
-          // Perform custom logic specific to the incomeCard target
-          (target.identify as Function).call();
-          print("Clicked on incomeCard target!");
-          // Add your action here...
+        if (target.identify == "expenseCard") {
+          // TODO: refactor this without duplicating this code
+          print(target);
         }
       },
     );
@@ -123,7 +126,11 @@ class _LandingPageState extends State<LandingPage>
           controller: _motionTabBarController,
           children: <Widget>[
             const OptionsScreen(),
-            BalancesScreen(incomeCardKey: incomeCard),
+            BalancesScreen(
+              navigationBalancesKey: navigationBalances,
+              incomeCardKey: incomeCard,
+              expenseCardKey: expenseCard,
+            ),
             ResumeScreen(
               balance: Balance(
                 id: "",
@@ -157,10 +164,10 @@ class _LandingPageState extends State<LandingPage>
         color: Colors.black,
         fontWeight: FontWeight.w500,
       ),
-      tabIconColor: Colors.blue[600],
+      tabIconColor: Theme.of(context).primaryColor,
       tabIconSize: 28.0,
       tabIconSelectedSize: 26.0,
-      tabSelectedColor: Colors.blue[900],
+      tabSelectedColor: Theme.of(context).primaryColor,
       tabIconSelectedColor: Colors.white,
       tabBarColor: Colors.white,
       onTabItemSelected: (int value) {

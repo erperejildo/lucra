@@ -56,7 +56,11 @@
   "contact_us": "Nous contacter",
   "about_us": "À propos de nous",
   "invalid_number": "Numéro invalide",
-  "next": "Suivant",
+  "next2": "Suivant",
+  "write_review_desc": "Nous avons remarqué que vous aimez Lucra. Ce serait génial si vous pouviez laisser un avis",
+  "maybe_later": "Peut-être plus tard",
+  "dont_ask_again": "Non, et ne me le demande plus.",
+  "write_review": "Écrire un avis",
   "other_apps": {
     "title": "Autres applications",
     "install": "Installer",

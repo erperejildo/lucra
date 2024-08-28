@@ -28,7 +28,7 @@ class Ads extends ChangeNotifier {
   }
 
   void hideShowAds(bool show) {
-    showingAds = show;
+    showingAds = false;
     if (showingAds) {
       // loadBanner();
       loadInterstitial(true);

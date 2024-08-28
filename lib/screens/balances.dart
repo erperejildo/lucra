@@ -7,12 +7,17 @@ import 'package:lucra/helpers/helpers.dart';
 import 'package:lucra/models/balance.dart';
 import 'package:lucra/providers/balance_groups.dart';
 import 'package:provider/provider.dart';
-import 'package:showcaseview/showcaseview.dart';
 
 class BalancesScreen extends StatefulWidget {
-  const BalancesScreen({Key? key, required this.incomeCardKey})
-      : super(key: key);
+  const BalancesScreen({
+    Key? key,
+    required this.navigationBalancesKey,
+    required this.incomeCardKey,
+    required this.expenseCardKey,
+  }) : super(key: key);
+  final GlobalKey navigationBalancesKey;
   final GlobalKey incomeCardKey;
+  final GlobalKey expenseCardKey;
 
   @override
   _BalancesScreenState createState() => _BalancesScreenState();
@@ -29,7 +34,7 @@ class _BalancesScreenState extends State<BalancesScreen> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false, // no back button
-        title: Text(translate('balances')),
+        title: Text(key: widget.navigationBalancesKey, translate('balances')),
         actions: <Widget>[
           addButton(),
           // TextButton(
@@ -85,31 +90,22 @@ class _BalancesScreenState extends State<BalancesScreen> {
       children: List.generate(
         Provider.of<BalanceGroups>(context, listen: false).list.length,
         (index) {
-          // TODO: find a different package
-          if (index == 0) {
-            return Showcase(
-              key: widget.incomeCardKey,
-              disableBarrierInteraction: true,
-              disableDefaultTargetGestures: true,
-              description:
-                  'This is your balances page. In here, you will find different expenses and incomes.',
-              onTargetClick: () => debugPrint('target clicked'),
-              disposeOnTap: false,
-              child: balanceCard(
-                  context,
-                  Provider.of<BalanceGroups>(context, listen: false)
-                      .list[index]),
-            );
-          }
-          return balanceCard(context,
-              Provider.of<BalanceGroups>(context, listen: false).list[index]);
+          return balanceCard(
+              context,
+              Provider.of<BalanceGroups>(context, listen: false).list[index],
+              index);
         },
       ),
     );
   }
 
-  Widget balanceCard(BuildContext context, Balance balance) {
+  Widget balanceCard(BuildContext context, Balance balance, int index) {
     return GestureDetector(
+      key: index == 0
+          ? widget.incomeCardKey
+          : index == 1
+              ? widget.expenseCardKey
+              : null,
       onPanDown: (_) =>
           Navigator.of(context).pushNamed('/resume', arguments: balance),
       child: Card(
