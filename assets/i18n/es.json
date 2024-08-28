@@ -61,14 +61,6 @@
   "maybe_later": "Quizás más tarde",
   "dont_ask_again": "No, y no me vuelvas a preguntar",
   "write_review": "Escribe una reseña",
-  "other_apps": {
-    "title": "Otras aplicaciones",
-    "install": "Instalar",
-    "app0": {
-      "title": "My Rents",
-      "desc": "Administra tus propiedades incluyendo arrendamientos, gastos, contratos, inquilinos, etc."
-    }
-  },
   "slides": {
     "skip": "Omitir",
     "get_started": "¡Empezar!",
@@ -78,5 +70,37 @@
     "description1": "No es necesario realizar ningún cálculo. Añade tu sueldo, otras fuentes de ingresos, así como tus gastos de salida (gimnasio, seguro, hipoteca, etc.). El saldo de tu cuenta se mostrará por año, mes, día, hora, minuto e incluso por segundo",
     "title2": "Te tenemos cubierto",
     "description2": "Como ejemplo, hemos agregado un sueldo (en verde) y una hipoteca (en rojo) a Saldos. Al hacer clic en cualquiera de ellos, verás tus saldos individuales en tiempo real. También tienes la opción de ver todo en la vista Total. Actualízalos o elimínalos, luego agrega los tuyos"
+  },
+  "other_apps": {
+    "title": "Otras aplicaciones",
+    "install": "Instalar",
+    "app0": {
+      "title": "My Rents",
+      "desc": "Administra tus propiedades incluyendo alquileres, gastos, contratos, inquilinos, etc.",
+      "img": "https://play-lh.googleusercontent.com/Jh74TQQq4TC5n6C7gvUnpNiZaQXbF814wQtH-1koiE1L9D-1W3hX4oTVy0EHdhSRiUu0=w200-rw",
+      "android_link": "https://play.google.com/store/apps/details?id=com.drodriguez.my_rents",
+      "ios_link": ""
+    },
+    "app1": {
+      "title": "Mis Matemáticas",
+      "desc": "¡Haga que las matemáticas sean interesantes para sus hijos! Observe cómo dominan la aritmética mediante ejercicios interactivos y evalúe sus conocimientos con exámenes interesantes. Siga su progreso y celebre sus logros juntos",
+      "img": "https://play-lh.googleusercontent.com/tNQjAbBEpeGzVPP7e4YfhTfjSj115BgWLsv6m1Q-9qTxLXDhkVtYR2I1T333rnqGiQ=s200-rw",
+      "android_link": "https://play.google.com/store/apps/details?id=mind.your.maths",
+      "ios_link": ""
+    },
+    "app2": {
+      "title": "TimeTap",
+      "desc": "Juego multijugador local y online en el que tienes que detener un cronómetro en exactamente 5 segundos. Fácil de jugar, difícil de dominar.",
+      "img": "https://play-lh.googleusercontent.com/y-VvdN6tMA9K1zvITKsNBAnoFKrDUEiW2NCEHIq3GFJvXwGbuuii2yZsvllytoPA5w=s200-rw",
+      "android_link": "https://play.google.com/store/apps/details?id=com.drodriguez.time_tap",
+      "ios_link": ""
+    },
+    "app3": {
+      "title": "Party Words",
+      "desc": "Juego multijugador en el que tendrás que competir contra otros equipos recreando palabras mediante mímica y dibujos sin decir ninguna palabra. ¡Sé el más rápido y creativo!",
+      "img": "https://play-lh.googleusercontent.com/XSfjWXCvgoF-FQxPNGPqkrMe6BbeFnnJ5lNVvtaTbmhH3Xl-H66AhWpT24a-ieL7dKUy=w200-rw",
+      "android_link": "https://play.google.com/store/apps/details?id=drodriguez.apps.Words",
+      "ios_link": ""
+    }
   }
 }

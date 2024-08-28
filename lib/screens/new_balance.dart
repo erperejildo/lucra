@@ -91,6 +91,7 @@ class _NewBalanceScreenState extends State<NewBalanceScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.white,
         title: Text(newBalance
             ? translate('new_profit_expense')
             : widget.balance!.title),

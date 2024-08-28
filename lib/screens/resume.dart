@@ -61,6 +61,7 @@ class _ResumeScreenState extends State<ResumeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.white,
         title: Text(
             widget.global ? translate('total_balance') : widget.balance.title),
         actions: <Widget>[

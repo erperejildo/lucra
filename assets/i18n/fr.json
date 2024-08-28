@@ -61,14 +61,6 @@
   "maybe_later": "Peut-être plus tard",
   "dont_ask_again": "Non, et ne me le demande plus.",
   "write_review": "Écrire un avis",
-  "other_apps": {
-    "title": "Autres applications",
-    "install": "Installer",
-    "app0": {
-      "title": "My Rents",
-      "desc": "Gérez vos propriétés, y compris les baux, les dépenses, les contrats, les locataires, etc."
-    }
-  },
   "slides": {
     "skip": "Sauter",
     "get_started": "Commencer!",
@@ -78,5 +70,37 @@
     "description1": "Vous n'avez pas besoin d'effectuer de calculs. Ajoutez votre salaire, d'autres sources de revenus, ainsi que vos frais de sortie (gymnase, assurance, hypothèque, etc.). Le solde de votre compte sera affiché par année, mois, jour, heure, minute et même par seconde",
     "title2": "Nous vous couvrons",
     "description2": "À titre d'exemples, nous avons ajouté un salaire (en vert) et une hypothèque (en rouge) aux soldes. Lorsque vous cliquez sur l'un d'eux, vous verrez leurs soldes individuels en temps réel. Vous avez également la possibilité de tout visualiser dans la vue Total. Mettez-les à jour ou supprimez-les, puis ajoutez les vôtres"
+  },
+  "other_apps": {
+    "title": "Autres applications",
+    "install": "Installer",
+    "app0": {
+      "title": "My Rents",
+      "desc": "Gérez vos propriétés, y compris la location, les dépenses, les contrats, les locataires, etc.",
+      "img": "https://play-lh.googleusercontent.com/Jh74TQQq4TC5n6C7gvUnpNiZaQXbF814wQtH-1koiE1L9D-1W3hX4oTVy0EHdhSRiUu0=w200-rw",
+      "android_link": "https://play.google.com/store/apps/details?id=com.drodriguez.my_rents",
+      "ios_link": ""
+    },
+    "app1": {
+      "title": "Mind your Math",
+      "desc": "Rendez les mathématiques passionnantes pour vos enfants ! Regardez-les maîtriser l'arithmétique grâce à des exercices interactifs et évaluez leurs connaissances grâce à des examens captivants. Suivez leurs progrès et célébrez leurs réalisations ensemble",
+      "img": "https://play-lh.googleusercontent.com/tNQjAbBEpeGzVPP7e4YfhTfjSj115BgWLsv6m1Q-9qTxLXDhkVtYR2I1T333rnqGiQ=s200-rw",
+      "android_link": "https://play.google.com/store/apps/details?id=mind.your.maths",
+      "ios_link": ""
+    },
+    "app2": {
+      "title": "TimeTap",
+      "desc": "Jeu multijoueur et en ligne où vous devez arrêter un chronomètre en exactement 5 secondes. Facile à jouer, difficile à maîtriser",
+      "img": "https://play-lh.googleusercontent.com/y-VvdN6tMA9K1zvITKsNBAnoFKrDUEiW2NCEHIq3GFJvXwGbuuii2yZsvllytoPA5w=s200-rw",
+      "android_link": "https://play.google.com/store/apps/details?id=com.drodriguez.time_tap",
+      "ios_link": ""
+    },
+    "app3": {
+      "title": "Party Words",
+      "desc": "Jeu multijoueur où vous devez affronter d'autres équipes en recréant des mots par mimétisme et dessins sans prononcer aucun mot. Soyez le plus rapide et le plus créatif !",
+      "img": "https://play-lh.googleusercontent.com/XSfjWXCvgoF-FQxPNGPqkrMe6BbeFnnJ5lNVvtaTbmhH3Xl-H66AhWpT24a-ieL7dKUy=w200-rw",
+      "android_link": "https://play.google.com/store/apps/details?id=drodriguez.apps.Words",
+      "ios_link": ""
+    }
   }
 }

@@ -33,6 +33,7 @@ class _BalancesScreenState extends State<BalancesScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.white,
         automaticallyImplyLeading: false, // no back button
         title: Text(key: widget.navigationBalancesKey, translate('balances')),
         actions: <Widget>[

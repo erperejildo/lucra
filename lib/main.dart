@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_translate/flutter_translate.dart';
 import 'package:lucra/helpers/helpers.dart';
@@ -42,6 +43,23 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  @override
+  initState() {
+    super.initState();
+    changeStatusBar();
+  }
+
+  void changeStatusBar() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+        statusBarColor: Colors.white,
+        systemNavigationBarColor: Colors.white,
+        systemNavigationBarIconBrightness: Brightness.dark,
+        statusBarIconBrightness: Brightness.dark,
+      ));
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final localizationDelegate = LocalizedApp.of(context).delegate;
