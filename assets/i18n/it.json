@@ -71,6 +71,12 @@
     "title2": "Ti abbiamo coperto",
     "description2": "Ad esempio, abbiamo aggiunto uno stipendio (in verde) e un mutuo (in rosso) a Saldi. Quando fai clic su uno di essi, vedrai i loro saldi individuali in tempo reale. Hai anche la possibilità di visualizzare tutto nella vista Totale. Aggiornali o rimuovili, quindi aggiungi i tuoi"
   },
+  "tour": {
+    "balances_page": "Questa è la pagina dei tuoi saldi. Qui troverai entrate e uscite diverse e regolari.\n\nNe abbiamo create un paio come esempio.",
+    "incomes": "Le carte verdi sono entrate. Queste carte possono essere stipendi, pagamenti ricevuti o qualsiasi altro profitto positivo.\n\nPuoi vedere nome, importo totale, frequenza e data.",
+    "expenses": "Stessa cosa per le spese. Queste potrebbero essere mutui, abbonamenti, pagamenti o qualsiasi altro profitto negativo.\n\nI dettagli sono simili ai redditi.\n\n",
+    "add_button": "Ora puoi rimuovere questi esempi e iniziare a crearne di tuoi."
+  },
   "other_apps": {
     "title": "Altre app",
     "install": "Installare",

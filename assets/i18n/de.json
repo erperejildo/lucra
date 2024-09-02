@@ -71,6 +71,12 @@
     "title2": "Wir haben Sie abgedeckt",
     "description2": "Als Beispiel haben wir ein Gehalt (in grün) und eine Hypothek (in rot) zu Salden hinzugefügt. Wenn Sie auf einen von ihnen klicken, sehen Sie ihre individuellen Salden in Echtzeit. Sie haben auch die Möglichkeit, sich alles in der Gesamtansicht anzusehen. Aktualisieren oder entfernen Sie sie und fügen Sie dann Ihre hinzu"
   },
+  "tour": {
+    "balances_page": "Dies ist Ihre Saldenseite. Hier finden Sie verschiedene und regelmäßige Einnahmen und Ausgaben.\n\nWir haben einige davon als Beispiel erstellt.",
+    "incomes": "Grüne Karten sind Einkünfte. Diese Karten können Gehalt, erhaltene Zahlungen oder sonstige positive Gewinne sein.\n\nSie können Name, Gesamtbetrag, Häufigkeit und Datum sehen.",
+    "expenses": "Dasselbe gilt für die Ausgaben. Dabei kann es sich um Hypotheken, Abonnements, Zahlungen oder sonstige negative Gewinne handeln.\n\nDie Einzelheiten sind ähnlich wie bei den Einnahmen.\n\n",
+    "add_button": "Sie können diese Beispiele jetzt entfernen und mit der Erstellung Ihrer eigenen beginnen."
+  },
   "other_apps": {
     "title": "Weitere Apps",
     "install": "Installieren",

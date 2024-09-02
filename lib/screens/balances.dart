@@ -14,10 +14,12 @@ class BalancesScreen extends StatefulWidget {
     required this.navigationBalancesKey,
     required this.incomeCardKey,
     required this.expenseCardKey,
+    required this.addButtonKey,
   }) : super(key: key);
   final GlobalKey navigationBalancesKey;
   final GlobalKey incomeCardKey;
   final GlobalKey expenseCardKey;
+  final GlobalKey addButtonKey;
 
   @override
   _BalancesScreenState createState() => _BalancesScreenState();
@@ -57,6 +59,7 @@ class _BalancesScreenState extends State<BalancesScreen> {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: IconButton(
+        key: widget.addButtonKey,
         onPressed: () {
           Navigator.of(context).pushNamed('/new-balance', arguments: null);
         },

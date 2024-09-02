@@ -71,6 +71,12 @@
     "title2": "Te tenemos cubierto",
     "description2": "Como ejemplo, hemos agregado un sueldo (en verde) y una hipoteca (en rojo) a Saldos. Al hacer clic en cualquiera de ellos, verás tus saldos individuales en tiempo real. También tienes la opción de ver todo en la vista Total. Actualízalos o elimínalos, luego agrega los tuyos"
   },
+  "tour": {
+    "balances_page": "Esta es tu página de saldos. En ella encontrarás ingresos y gastos diferentes y regulares.\n\nHemos creado un par de ellos a modo de ejemplo.",
+    "incomes": "Las tarjetas verdes son ingresos. Estas tarjetas pueden ser sueldos, pagos recibidos o cualquier otro beneficio positivo.\n\nPuedes ver el nombre, el monto total, la frecuencia y la fecha.",
+    "expenses": "Lo mismo ocurre con los gastos. Pueden ser hipotecas, suscripciones, pagos o cualquier otro importe negativo.\n\nLos detalles son similares a los de los ingresos.\n\n",
+    "add_button": "Ahora puedes eliminar estos ejemplos y comenzar a crear los tuyos."
+  },
   "other_apps": {
     "title": "Otras aplicaciones",
     "install": "Instalar",

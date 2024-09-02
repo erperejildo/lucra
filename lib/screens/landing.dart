@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_translate/flutter_translate.dart';
 import 'package:line_icons/line_icons.dart';
@@ -11,11 +9,10 @@ import 'package:lucra/screens/balances.dart';
 import 'package:lucra/screens/options.dart';
 import 'package:lucra/screens/resume.dart';
 import 'package:lucra/services/shop.dart';
-import 'package:lucra/tour_target.dart';
+import 'package:lucra/widgets/tutorial.dart';
 import 'package:motion_tab_bar/MotionTabBar.dart';
 import 'package:motion_tab_bar/MotionTabBarController.dart';
 import 'package:provider/provider.dart';
-import 'package:tutorial_coach_mark/tutorial_coach_mark.dart';
 
 import '../widgets/review_dialog.dart';
 
@@ -29,12 +26,11 @@ class LandingPage extends StatefulWidget {
 class _LandingPageState extends State<LandingPage>
     with TickerProviderStateMixin {
   static int _index = 1;
-  // steps
-  late TutorialCoachMark tutorialCoachMark;
+  late MotionTabBarController _motionTabBarController;
   GlobalKey navigationBalances = GlobalKey();
   GlobalKey incomeCard = GlobalKey();
   GlobalKey expenseCard = GlobalKey();
-  late MotionTabBarController _motionTabBarController;
+  GlobalKey addButton = GlobalKey();
 
   @override
   void initState() {
@@ -49,7 +45,12 @@ class _LandingPageState extends State<LandingPage>
     init();
     // Another showcase method
     // steps
-    createTutorial();
+    Tutorial(
+      navigationBalances: navigationBalances,
+      incomeCard: incomeCard,
+      expenseCard: expenseCard,
+      addButton: addButton,
+    ).check(context);
     ReviewDialog().check(context);
     // method 2
     // WidgetsBinding.instance.addPostFrameCallback(
@@ -63,28 +64,7 @@ class _LandingPageState extends State<LandingPage>
     _motionTabBarController.dispose();
   }
 
-  void createTutorial() {
-    tutorialCoachMark = TutorialCoachMark(
-      targets: landingPageTargets(
-        navigationBalances: navigationBalances,
-        incomeCard: incomeCard,
-        expenseCard: expenseCard,
-      ),
-      colorShadow: Colors.blue[900]!,
-      textSkip: translate('slides.skip').toUpperCase(),
-      paddingFocus: 10,
-      opacityShadow: 0.5,
-      imageFilter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
-      onClickTarget: (target) {
-        // Check if the clicked target is the one you want to perform a specific action for
-        if (target.identify == "expenseCard") {
-          // TODO: refactor this without duplicating this code
-          print(target);
-        }
-      },
-    );
-    tutorialCoachMark.show(context: context);
-  }
+  void createTutorial() {}
 
   init() async {
     await loadExamples();
@@ -130,6 +110,7 @@ class _LandingPageState extends State<LandingPage>
               navigationBalancesKey: navigationBalances,
               incomeCardKey: incomeCard,
               expenseCardKey: expenseCard,
+              addButtonKey: addButton,
             ),
             ResumeScreen(
               balance: Balance(

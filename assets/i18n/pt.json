@@ -71,6 +71,12 @@
     "title2": "Nós cobrimos você",
     "description2": "Como exemplos, adicionamos um salário (em verde) e uma hipoteca (em vermelho) a Saldos. Ao clicar em qualquer um deles, você verá seus saldos individuais em tempo real. Você também tem a opção de visualizar tudo na visualização Total. Atualize ou remova-os e adicione o seu"
   },
+  "tour": {
+    "balances_page": "Esta é sua página de saldos. Aqui, você encontrará receitas e despesas diferentes e regulares.\n\nCriamos algumas delas como exemplo.",
+    "incomes": "Green cards são rendas. Esses cartões podem ser salários, pagamentos recebidos ou qualquer outro lucro positivo.\n\nVocê pode ver nome, valor total, frequência e data.",
+    "expenses": "A mesma coisa com as despesas. Essas podem ser hipoteca, assinaturas, pagamentos ou qualquer outro lucro negativo.\n\nOs detalhes são semelhantes aos das rendas.\n\n",
+    "add_button": "Agora você pode remover esses exemplos e começar a criar os seus."
+  },
   "other_apps": {
     "title": "Outros apps",
     "install": "Instalar",

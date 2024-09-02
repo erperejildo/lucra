@@ -20,9 +20,11 @@ class RouteGenerator {
       case '/balances':
         return MaterialPageRoute(
           builder: (_) => BalancesScreen(
-              navigationBalancesKey: data,
-              incomeCardKey: data,
-              expenseCardKey: data),
+            navigationBalancesKey: data,
+            incomeCardKey: data,
+            expenseCardKey: data,
+            addButtonKey: data,
+          ),
         );
       case '/other-apps':
         return MaterialPageRoute(

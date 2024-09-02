@@ -71,6 +71,12 @@
     "title2": "We got you covered",
     "description2": "As examples, we've added a salary (in green) and a mortgage (in red) to Balances. When you click on any of them, you will see their individual balances in real time. You also have the option of viewing everything in the Total view. Update or remove them, then add yours"
   },
+"tour": {
+  "balances_page": "This is your balances page. In here, you will find different and regular incomes and expenses.\n\nWe created a couple of them as an example.",
+  "incomes": "Green cards are incomes. These cards could be salary, payments received or any other positive profit.\n\nYou can see name, total amount, frequency and date.",
+  "expenses": "Same thing with the expenses. These ones could be mortgage, subscriptions, payments or any other negative profit.\n\nThe details are similar to incomes.\n\n",
+  "add_button": "You can now remove these examples and start creating yours."
+},
   "other_apps": {
     "title": "Other apps",
     "install": "Install",

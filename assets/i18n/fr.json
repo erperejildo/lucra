@@ -71,6 +71,12 @@
     "title2": "Nous vous couvrons",
     "description2": "À titre d'exemples, nous avons ajouté un salaire (en vert) et une hypothèque (en rouge) aux soldes. Lorsque vous cliquez sur l'un d'eux, vous verrez leurs soldes individuels en temps réel. Vous avez également la possibilité de tout visualiser dans la vue Total. Mettez-les à jour ou supprimez-les, puis ajoutez les vôtres"
   },
+  "tour": {
+    "balances_page": "Il s'agit de votre page de soldes. Vous y trouverez des revenus et des dépenses différents et réguliers.\n\nNous en avons créé quelques-uns à titre d'exemple.",
+    "incomes": "Les cartes vertes sont des revenus. Ces cartes peuvent être des salaires, des paiements reçus ou tout autre bénéfice positif.\n\nVous pouvez voir le nom, le montant total, la fréquence et la date.",
+    "expenses": "Il en va de même pour les dépenses. Il peut s'agir d'hypothèques, d'abonnements, de paiements ou de tout autre bénéfice négatif.\n\nLes détails sont similaires à ceux des revenus.\n\n",
+    "add_button": "Vous pouvez maintenant supprimer ces exemples et commencer à créer les vôtres."
+  },
   "other_apps": {
     "title": "Autres applications",
     "install": "Installer",
