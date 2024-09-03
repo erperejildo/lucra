@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_translate/flutter_translate.dart';
 import 'package:intl/intl.dart';
@@ -11,8 +12,8 @@ import 'package:lucra/providers/balance_groups.dart';
 import 'package:provider/provider.dart';
 
 class RealBalance extends StatefulWidget {
-  const RealBalance({Key? key, required this.realMoney, required this.balance})
-      : super(key: key);
+  const RealBalance(
+      {super.key, required this.realMoney, required this.balance});
   final RealMoney realMoney;
   final Balance balance;
 
@@ -62,13 +63,9 @@ class _RealBalanceState extends State<RealBalance> {
               ),
             ),
             Text(
-              translate('since') +
-                  ' ' +
-                  DateFormat.yMMMd(language).format(widget.balance.id != ''
-                      ? DateTime.parse(
-                          widget.balance.fromDate,
-                        )
-                      : Provider.of<BalanceGroups>(context).firstDate!),
+              '${translate('since')} ${DateFormat.yMMMd(language).format(widget.balance.id != '' ? DateTime.parse(
+                  widget.balance.fromDate,
+                ) : Provider.of<BalanceGroups>(context).firstDate!)}',
               style: textStyle,
             ),
             Visibility(
@@ -86,20 +83,25 @@ class _RealBalanceState extends State<RealBalance> {
             Container(height: 25),
             Visibility(
               visible: widget.balance.image.isNotEmpty,
-              child: Image.network(
-                widget.balance.image,
-                errorBuilder: (context, error, stackTrace) {
-                  return const Center(
-                    child: Icon(
-                      Icons.error_outline,
-                      color: Colors.red,
-                      size: 48.0,
-                    ),
-                  );
-                },
-                fit: BoxFit.cover,
-                width: 100,
-                height: 100,
+              child: Container(
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(
+                    color: widget.realMoney.untilNow >= 0
+                        ? Colors.green[800]!
+                        : Colors.red[800]!,
+                    width: 8,
+                  ),
+                ),
+                child: CircleAvatar(
+                  radius: 100,
+                  backgroundImage:
+                      CachedNetworkImageProvider(widget.balance.image),
+                  onBackgroundImageError: (exception, stackTrace) {
+                    const Icon(Icons.error);
+                  },
+                  backgroundColor: Colors.transparent,
+                ),
               ),
             ),
             Container(height: 25),

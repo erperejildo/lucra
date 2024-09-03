@@ -16,7 +16,7 @@ import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
 
 class NewBalanceScreen extends StatefulWidget {
-  NewBalanceScreen({Key? key, this.balance}) : super(key: key);
+  NewBalanceScreen({super.key, this.balance});
   Balance? balance;
 
   @override
@@ -92,9 +92,9 @@ class _NewBalanceScreenState extends State<NewBalanceScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        title: Text(newBalance
-            ? translate('new_profit_expense')
-            : widget.balance!.title),
+        title: Text(
+          newBalance ? translate('new_profit_expense') : widget.balance!.title,
+        ),
         actions: <Widget>[
           saveButton(),
         ],
@@ -227,8 +227,12 @@ class _NewBalanceScreenState extends State<NewBalanceScreen> {
       trailing: IconButton(
         icon: const Icon(LineIcons.paste),
         onPressed: () async {
-          var url = await Clipboard.getData(Clipboard.kTextPlain);
-          _imageController.text = url!.text ?? '';
+          ClipboardData? clipboardData = await Clipboard.getData('text/plain');
+          if (clipboardData != null) {
+            setState(() {
+              _imageController.text = clipboardData.text ?? '';
+            });
+          }
         },
       ),
     );

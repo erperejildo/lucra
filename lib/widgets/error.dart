@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_translate/flutter_translate.dart';
 
 class Error extends StatelessWidget {
-  const Error({Key? key}) : super(key: key);
+  const Error({super.key});
 
   @override
   Widget build(BuildContext context) {

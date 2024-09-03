@@ -14,8 +14,7 @@ import 'package:lucra/widgets/real_balance.dart';
 import 'package:provider/provider.dart';
 
 class ResumeScreen extends StatefulWidget {
-  ResumeScreen({Key? key, required this.balance, this.global = false})
-      : super(key: key);
+  ResumeScreen({super.key, required this.balance, this.global = false});
   Balance balance;
   bool global;
 

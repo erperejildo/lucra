@@ -123,7 +123,7 @@ class Helpers {
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
     final Email newEmail = Email(
       body: '',
-      subject: "Lucra (" + packageInfo.version + ") - " + phoneInfo,
+      subject: "Lucra (${packageInfo.version}) - $phoneInfo",
       recipients: ["drodriguez.apps@gmail.com"],
       isHTML: false,
     );

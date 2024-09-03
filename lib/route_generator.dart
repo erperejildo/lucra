@@ -28,7 +28,7 @@ class RouteGenerator {
         );
       case '/other-apps':
         return MaterialPageRoute(
-          builder: (_) => OtherAppsScreen(),
+          builder: (_) => const OtherAppsScreen(),
         );
       case '/new-balance':
         return MaterialPageRoute(

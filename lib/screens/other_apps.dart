@@ -25,7 +25,6 @@ class OtherAppsScreenState extends State<OtherAppsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        elevation: 0.0,
         title: Text(translate('other_apps.title')),
       ),
       body: SingleChildScrollView(

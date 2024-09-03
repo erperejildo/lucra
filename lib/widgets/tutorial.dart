@@ -24,8 +24,8 @@ class Tutorial {
   check(BuildContext context) async {
     final shownTutorial = prefs.getBool('shownTutorial');
     if (shownTutorial is! bool) return prefs.setBool('shownTutorial', false);
+    if (shownTutorial) return;
     prefs.setBool('shownTutorial', true);
-
     show(context);
   }
 
@@ -46,7 +46,6 @@ class Tutorial {
         // Check if the clicked target is the one you want to perform a specific action for
         if (target.identify == "expenseCard") {
           // TODO: refactor this without duplicating this code
-          print(target);
         }
       },
     );

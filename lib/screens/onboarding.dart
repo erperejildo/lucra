@@ -73,7 +73,6 @@ class OnboardingScreenState extends State<OnboardingScreen> {
           color: Theme.of(context).primaryColor,
         ),
         backgroundColor: Colors.transparent,
-        elevation: 0.0,
         title: GestureDetector(
           child: Text(
             translate('slides.skip'),
