@@ -266,13 +266,10 @@ class _BalancesScreenState extends State<BalancesScreen> {
                 children: [
                   title(balance),
                   const Spacer(),
-                  Column(
-                    children: [
-                      price(balance),
-                      frequency(balance),
-                      since(balance),
-                    ],
-                  ),
+                  price(balance),
+                  const Spacer(),
+                  frequency(balance),
+                  since(balance),
                 ],
               ),
             ),
@@ -307,8 +304,8 @@ class _BalancesScreenState extends State<BalancesScreen> {
           : Colors.transparent,
       width: double.infinity,
       padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 16),
-      constraints: const BoxConstraints(
-        maxHeight: 80,
+      constraints: BoxConstraints(
+        maxHeight: detailedView ? 80 : 40,
       ),
       child: FittedBox(
         fit: BoxFit.contain,

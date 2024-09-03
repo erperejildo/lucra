@@ -1,18 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_translate/flutter_translate.dart';
 import 'package:line_icons/line_icons.dart';
-import 'package:lucra/main.dart';
 import 'package:lucra/models/balance.dart';
-import 'package:lucra/models/demo_balances.dart';
-import 'package:lucra/providers/balance_groups.dart';
 import 'package:lucra/screens/balances.dart';
 import 'package:lucra/screens/options.dart';
 import 'package:lucra/screens/resume.dart';
-import 'package:lucra/services/shop.dart';
 import 'package:lucra/widgets/tutorial.dart';
 import 'package:motion_tab_bar/MotionTabBar.dart';
 import 'package:motion_tab_bar/MotionTabBarController.dart';
-import 'package:provider/provider.dart';
 
 import '../widgets/review_dialog.dart';
 
@@ -41,8 +36,6 @@ class _LandingPageState extends State<LandingPage>
       vsync: this,
     );
     _motionTabBarController.addListener(_handleTabSelection);
-    shop.getProduct(context);
-    init();
     // Another showcase method
     // steps
     Tutorial(
@@ -65,23 +58,6 @@ class _LandingPageState extends State<LandingPage>
   }
 
   void createTutorial() {}
-
-  init() async {
-    await loadExamples();
-  }
-
-  loadExamples() async {
-    // await prefs.clear(); // TEST
-    if (initialRoute == '/slides') {
-      await Provider.of<BalanceGroups>(context, listen: false).deleteBalances();
-      // ignore: use_build_context_synchronously
-      await Provider.of<BalanceGroups>(context, listen: false)
-          .addBalances(demoBalanceGroups);
-    } else {
-      await Provider.of<BalanceGroups>(context, listen: false)
-          .getBalanceGroups();
-    }
-  }
 
   _handleTabSelection() {
     setState(() {

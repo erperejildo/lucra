@@ -28,7 +28,7 @@ class Ads extends ChangeNotifier {
   }
 
   void hideShowAds(bool show) {
-    showingAds = false;
+    showingAds = show;
     if (showingAds) {
       // loadBanner();
       loadInterstitial(true);
@@ -119,9 +119,9 @@ class Ads extends ChangeNotifier {
   }
 
   void disposeAds() {
-    adBanner?.dispose();
-    adBanner = null;
-    isBannerReady = false;
+    // adBanner?.dispose();
+    // adBanner = null;
+    // isBannerReady = false;
     interstitialAd?.dispose();
     interstitialAd = null;
     isInterstitialReady = false;

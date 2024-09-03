@@ -9,11 +9,12 @@ import 'package:lucra/helpers/helpers.dart';
 import 'package:lucra/helpers/validators.dart';
 import 'package:lucra/models/balance.dart';
 import 'package:lucra/models/real_money.dart';
-import 'package:lucra/providers/ads.dart';
-import 'package:lucra/providers/balance_groups.dart';
 import 'package:lucra/widgets/real_balance.dart';
 import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
+
+import '../providers/ads.dart';
+import '../providers/balance_groups.dart';
 
 class NewBalanceScreen extends StatefulWidget {
   NewBalanceScreen({super.key, this.balance});
@@ -114,7 +115,7 @@ class _NewBalanceScreenState extends State<NewBalanceScreen> {
               await Provider.of<BalanceGroups>(context, listen: false)
                   .addBalance(widget.balance!);
               Navigator.of(context).pop();
-              Navigator.pushReplacementNamed(context, '/');
+              // Navigator.pushNamedAndRemoveUntil(context, '/', (_) => print('s'));
               Navigator.of(context)
                   .pushNamed('/resume', arguments: widget.balance);
             } else {

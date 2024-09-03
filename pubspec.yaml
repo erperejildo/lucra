@@ -43,7 +43,15 @@ dependencies:
 flutter_native_splash:
   image: assets/images/icon.png
   color: '153952'
-  fill_horizontal: true
+  web: false
+  android_gravity: center
+  ios_content_mode: scaleAspectFill
+  fullscreen: true
+  android_12:
+    image: assets/resources/splash_android12.png
+    color: '153952'
+    # icon_background_color: "#111111"
+#    branding: assets/designs/branding.png
 
 # generate new icon: flutter pub run flutter_launcher_icons:main
 flutter_icons:
