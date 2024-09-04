@@ -168,7 +168,7 @@ class OnboardingScreenState extends State<OnboardingScreen> {
     return GestureDetector(
       onPanDown: (_) {
         if (_currentPage == _slidesContent.length - 1) {
-          Navigator.of(context).pushNamed("/");
+          Navigator.pushNamedAndRemoveUntil(context, '/', (_) => false);
         } else {
           _pageController.nextPage(
             duration: const Duration(milliseconds: 500),

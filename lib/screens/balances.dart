@@ -110,7 +110,7 @@ class _BalancesScreenState extends State<BalancesScreen> {
     final deviceWidth = MediaQuery.of(context).size.width;
 
     return GridView.count(
-      childAspectRatio: detailedView ? 2 : 1,
+      childAspectRatio: detailedView ? 2.5 : 1,
       padding: const EdgeInsets.symmetric(horizontal: 2.5, vertical: 2.5),
       crossAxisCount: deviceWidth > 700
           ? (deviceWidth * 0.006).round()
@@ -267,7 +267,10 @@ class _BalancesScreenState extends State<BalancesScreen> {
                   title(balance),
                   const Spacer(),
                   price(balance),
-                  const Spacer(),
+                  Visibility(
+                    visible: balance.image.isEmpty,
+                    child: const Spacer(),
+                  ),
                   frequency(balance),
                   since(balance),
                 ],
@@ -305,7 +308,7 @@ class _BalancesScreenState extends State<BalancesScreen> {
       width: double.infinity,
       padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 16),
       constraints: BoxConstraints(
-        maxHeight: detailedView ? 80 : 40,
+        maxHeight: detailedView ? 50 : 40,
       ),
       child: FittedBox(
         fit: BoxFit.contain,

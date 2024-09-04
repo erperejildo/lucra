@@ -56,6 +56,11 @@ class _MyAppState extends State<MyApp> {
     changeStatusBar();
     shop.getProduct(context);
     loadExamples();
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        systemNavigationBarIconBrightness: Brightness.dark,
+      ),
+    );
   }
 
   Future<void> loadExamples() async {
